@@ -1,36 +1,30 @@
-# VRV Security Assignment
+# VRV Security Log Analysis Assignment
 
-This repository contains the implementation of a log analysis tool to detect suspicious activity from web server logs, specifically focusing on:
+This repository contains a Python implementation for analyzing web server logs to detect suspicious activity, count IP requests, and find the most frequently accessed endpoints. The goal is to parse logs and perform various analyses, including detecting brute force login attempts, counting requests per IP, and identifying the most accessed endpoints.
 
-1. IP Address Request Count
-2. Most Frequently Accessed Endpoint
-3. Suspicious Activity Detection (Failed login attempts)
+## Project Steps
 
-## Prerequisites
+### 1. **Count Requests Per IP**
+   - This script counts the number of requests made by each IP address in the server logs.
+   - It outputs a list of IPs with their corresponding request counts.
 
-Before running the code, ensure you have the following installed:
-- Python 3.6 or higher
-- Required Python libraries (`pandas`)
+### 2. **Most Frequently Accessed Endpoint**
+   - The script identifies the most frequently accessed endpoint in the server logs (e.g., `/home`, `/login`, `/about`).
+   - It outputs the endpoint with the highest access count.
+
+### 3. **Detect Suspicious Activity**
+   - The code detects suspicious activity by looking for IPs that have failed login attempts (HTTP status code `401` with message `"Invalid credentials"`).
+   - It flags IP addresses that exceed a specified threshold (default is 10 failed login attempts).
+
+### 4. **Save Results to CSV**
+   - The results of the analysis (IP counts, most frequently accessed endpoint, and suspicious activity) are saved into a CSV file (`log_analysis_results.csv`).
+
+## Requirements
+
+Before running the code, ensure that you have Python 3.6+ installed along with the required libraries. The script uses the following libraries:
+
+- `re` (Regular Expressions) for parsing log data.
+- `collections.Counter` for counting IPs and endpoints.
 
 To run the code:
   - python main.py
-
-**Steps Implemented**
-
-Step 1: Parse Web Server Logs
-The first step is to parse the raw log data into structured format (IP address, request type, status code, etc.). This data will be processed to identify patterns.
-
-Step 2: Analyze IP Address Request Count
-The code counts the number of requests each IP address has made to the server. It collects all IP addresses from the log entries and calculates their frequency.
-
-Step 3: Analyze Most Frequently Accessed Endpoint
-The script identifies the most frequently accessed endpoint in the logs (e.g., /login, /home, /about).
-
-Step 4: Detect Suspicious Activity
-Suspicious activity is detected by checking failed login attempts. The code flags IP addresses that have more than 10 failed login attempts (HTTP status 401 or failure message "Invalid credentials").
-
-Step 5: Output the Results
-The script outputs:
-    -The IP addresses with their request count.
-    -The most frequently accessed endpoint.
-    -Suspicious IP addresses with their failed login attempts.
