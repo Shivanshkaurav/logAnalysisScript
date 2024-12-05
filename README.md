@@ -31,7 +31,6 @@ Suspicious activity is detected by checking failed login attempts. The code flag
 
 Step 5: Output the Results
 The script outputs:
-
-The IP addresses with their request count.
-The most frequently accessed endpoint.
-Suspicious IP addresses with their failed login attempts.
+    -The IP addresses with their request count.
+    -The most frequently accessed endpoint.
+    -Suspicious IP addresses with their failed login attempts.
